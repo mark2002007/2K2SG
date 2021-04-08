@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HDF5-CSharp" Version="1.12.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HDF5DotNet">
+      <HintPath>lib\HDF5DotNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
