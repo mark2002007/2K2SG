@@ -1,32 +1,36 @@
 ﻿using System;
-using PS._3;
 using PS._3.Units;
 
-namespace PS
+namespace PS._3.Menu
 {
+    public enum PlaylistTypes
+    {
+        Txt,
+        Bin
+    }
     public class Menu
     {
-        private string playlist_type { get; set; }
+        private PlaylistTypes playlistType { get; set; }
         private string pointer { get; set; }
         public int pPos { get; set; }
-        public string list_ind { get; set; }
+        public string listInd { get; set; }
         public string title { get; set; }
 
-        private Playlist playlist;
+        private readonly Playlist playlist;
 
-        public Menu(string playlist_type, string title = "Menu", string list_ind = "ORDERED", string pointer = "<")
+        public Menu(PlaylistTypes playlistType, string title = "Menu", string list_ind = "ORDERED", string pointer = "<")
         {
             this.title = title;
-            this.list_ind = list_ind;
+            this.listInd = list_ind;
             this.pointer = pointer;
-            this.playlist_type = playlist_type;
+            this.playlistType = playlistType;
 
-            switch (playlist_type)
+            switch (playlistType)
             {
-                case "txt":
+                case PlaylistTypes.Txt:
                     playlist = new TxtPlaylist(@"C:\Programs\MyPrograms\C#\Canvas (Cshp dnet core)\PS\3\Data\Songs.txt");
                     break;
-                case "bin":
+                case PlaylistTypes.Bin:
                     playlist = new BinPlaylist(@"C:\Programs\MyPrograms\C#\Canvas (Cshp dnet core)\PS\3\Data\Songs.dat");
                     break;
             }
@@ -35,9 +39,9 @@ namespace PS
         public void AddSong()
         {
             Console.Clear(); Console.WriteLine("\tAdd new song");
-            Console.Write("Title: "); string title = Console.ReadLine();
-            Console.Write("Author \nName : "); string auth_name = Console.ReadLine();
-            Console.Write("Age : "); string auth_age = Console.ReadLine();
+            Console.Write("title: "); string title = Console.ReadLine();
+            Console.Write("author \nName : "); string auth_name = Console.ReadLine();
+            Console.Write("age : "); string auth_age = Console.ReadLine();
             playlist.Add(new Song(title, new Author(auth_name, int.Parse(auth_age))));
         }
 
@@ -52,15 +56,14 @@ namespace PS
         {
             bool exit = false;
             int rowN = 5, pPos = 1;
-            ConsoleKey key;
             while (!exit)
             {
                 Console.Clear();
                 Console.WriteLine($"\t{title}");
                 for (int i = 0; i < rowN; i++)
                 {
-                    if (list_ind == "ORDERED") Console.Write($"{i + 1}. ");
-                    else if (list_ind == "UNORDERED") Console.Write("*");
+                    if (listInd == "ORDERED") Console.Write($"{i + 1}. ");
+                    else if (listInd == "UNORDERED") Console.Write("*");
                     switch (i + 1)
                     {
                         case 1:
@@ -88,7 +91,7 @@ namespace PS
                     Console.WriteLine();
                 }
 
-                key = Console.ReadKey().Key;
+                var key = Console.ReadKey().Key;
 
                 switch (key)
                 {
@@ -145,8 +148,8 @@ namespace PS
                 Console.WriteLine($"\tAdd");
                 for (int i = 0; i < rowN; i++)
                 {
-                    if (list_ind == "ORDERED") Console.Write($"{i + 1}. ");
-                    else if (list_ind == "UNORDERED") Console.Write("*");
+                    if (listInd == "ORDERED") Console.Write($"{i + 1}. ");
+                    else if (listInd == "UNORDERED") Console.Write("*");
 
                     switch (i + 1)
                     {
@@ -196,15 +199,14 @@ namespace PS
         {
             bool exit = false;
             int rowN = 2, pPos = 1;
-            ConsoleKey user_input;
             while (!exit)
             {
                 Console.Clear();
                 Console.WriteLine($"\tRemove");
                 for (int i = 0; i < rowN; i++)
                 {
-                    if (list_ind == "ORDERED") Console.Write($"{i + 1}. ");
-                    else if (list_ind == "UNORDERED") Console.Write("*");
+                    if (listInd == "ORDERED") Console.Write($"{i + 1}. ");
+                    else if (listInd == "UNORDERED") Console.Write("*");
 
                     switch (i + 1)
                     {
@@ -221,7 +223,7 @@ namespace PS
                     Console.WriteLine();
                 }
 
-                user_input = Console.ReadKey().Key;
+                var user_input = Console.ReadKey().Key;
                 switch (user_input)
                 {
                     case ConsoleKey.UpArrow:
@@ -261,8 +263,8 @@ namespace PS
                 Console.WriteLine($"\tShow");
                 for (int i = 0; i < rowN; i++)
                 {
-                    if (list_ind == "ORDERED") Console.Write($"{i + 1}. ");
-                    else if (list_ind == "UNORDERED") Console.Write("*");
+                    if (listInd == "ORDERED") Console.Write($"{i + 1}. ");
+                    else if (listInd == "UNORDERED") Console.Write("*");
 
                     switch (i + 1)
                     {
@@ -319,8 +321,8 @@ namespace PS
                 Console.WriteLine($"\tSettings");
                 for (int i = 0; i < rowN; i++)
                 {
-                    if (list_ind == "ORDERED") Console.Write($"{i + 1}. ");
-                    else if (list_ind == "UNORDERED") Console.Write("*");
+                    if (listInd == "ORDERED") Console.Write($"{i + 1}. ");
+                    else if (listInd == "UNORDERED") Console.Write("*");
 
                     switch (i + 1)
                     {
@@ -395,7 +397,7 @@ namespace PS
         {
             Console.Clear();
             Console.Write("Enter indexation type : ");
-            list_ind = Console.ReadLine();
+            listInd = Console.ReadLine();
         }
 
         public void ChangePointer()

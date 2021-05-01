@@ -21,6 +21,14 @@ namespace NMLA
             return V;
         }
 
+        public static double[] MatToVec(double[,] V)
+        {
+            double[] v = new double[V.GetLength(0)];
+            for (int i = 0; i < V.GetLength(0); i++)
+                v[i] = V[i,0];
+            return v;
+        }
+
         public static double[,] MatrixMult(double[,] A, double[,] B)
         {
             double[,] R = new double[A.GetLength(0), B.GetLength(1)];
@@ -42,7 +50,6 @@ namespace NMLA
                     return false;
             return true;
         }
-
 
 
     }

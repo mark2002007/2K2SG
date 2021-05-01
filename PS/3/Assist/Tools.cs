@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PS._3
+﻿namespace PS._3
 {
     class Tools
     {
@@ -11,7 +7,7 @@ namespace PS._3
             string res = "";
             while (num > 0)
             {
-                res = (num % 2).ToString() + res;
+                res = (num % 2) + res;
                 num /= 2;
             }
             return int.Parse(res);

@@ -13,6 +13,6 @@ namespace PS._3.Units
             this.name = name;
             this.age = age;
         }
-        public override string ToString() => $"Name : {name}\nAge : {age}";
+        public override string ToString() => $"name : {name}\nAge : {age}";
     }
 }

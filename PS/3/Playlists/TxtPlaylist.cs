@@ -14,9 +14,9 @@ namespace PS._3
 
         public override void Download()
         {
-            using (StreamWriter file = new StreamWriter(src))
+            using var file = new StreamWriter(src);
                 foreach (var song in playlist)
-                    file.WriteLine($"{song.title},{song.author}");
+                    file.WriteLine($"{song.title}@{song.author.name}@{song.author.age}");
         }
 
         public override void Upload()
@@ -32,7 +32,7 @@ namespace PS._3
                     line = file.ReadLine();
                     if (!string.IsNullOrEmpty(line))
                     {
-                        parameters = line.Split(",");
+                        parameters = line.Split("@");
                         Add(new Song(parameters[0], new Author(parameters[1], int.Parse(parameters[2]))));
                     }
                     else

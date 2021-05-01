@@ -5,6 +5,9 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Channels;
+using System.Windows;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace Canvas
 {
@@ -12,7 +15,6 @@ namespace Canvas
     {
         static void Main(string[] args)
         {
-
 
 
             //1

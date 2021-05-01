@@ -16,6 +16,6 @@ namespace PS._3
             this.author = author;
         }
 
-        public override string ToString() => $"Title : {title}\nAuthor ::\n{author}";
+        public override string ToString() => $"title : {title}\nAuthor ::\n{author}";
     }
 }

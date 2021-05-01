@@ -10,7 +10,8 @@ namespace PS._3
         protected List<Song> playlist { get; set; }
         protected string src { get; set; }
         protected bool sync { get; set; }
-        public Playlist(string src, bool sync = true)
+
+        protected Playlist(string src, bool sync = true)
         {
             playlist = new List<Song>();
             this.src = src;

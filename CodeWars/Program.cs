@@ -1,13 +1,59 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Channels;
+
+
 
 public static class Kata
 {
     static void Main()
     {
-        Console.WriteLine(XO("xxOoog"));    
+        Console.WriteLine(ArabicToRome(19));
+        //for (int i = 0; i < 4000; i++)
+        //{
+        //    Console.WriteLine($"{i}\t{ArabicToRome(i)}\t{ArabicToRomeOneline(i)}");
+        //}
+
+        Console.WriteLine(Enumerable.Range(0, 100).All(x => ArabicToRome(x) == ArabicToRomeOneline(x)));
     }
+
+    public static string ArabicToRome(int n)
+    {
+        string res = string.Empty;
+        for (int i = n.ToString().Length - 1; i >= 0; i--)
+        {
+            int dig = int.Parse(n.ToString()[n.ToString().Length - 1 - i].ToString());
+            switch (i)
+            {
+                case 0:
+                    res += new[] { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }[dig];
+                    break;
+                case 1:
+                    res += new[] { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "CX" }[dig];
+                    break;
+                case 2:
+                    res += new[] { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" }[dig];
+                    break;
+                case 3:
+                    res += new[] { "", "M", "MM", "MMM"}[dig];
+                    break;
+            }
+        }
+        return res;
+    }
+
+    public static string ArabicToRomeOneline(int n)
+    {
+        return Enumerable.Range(0,n.ToString().Length).
+            Reverse().
+            Select(i => i == 0 ? new[] { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }[int.Parse(n.ToString()[n.ToString().Length - 1 - i].ToString())] :
+                            i == 1 ? new[] { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "CX" }[int.Parse(n.ToString()[n.ToString().Length - 1 - i].ToString())] : 
+                            i == 2 ? new[] { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" }[int.Parse(n.ToString()[n.ToString().Length - 1 - i].ToString())] : 
+                                     new[] { "", "M", "MM", "MMM"}[int.Parse(n.ToString()[n.ToString().Length - 1 - i].ToString())]).
+                Aggregate((res,x) => res + x);
+    }
+
     public static int PositiveSum(int[] arr)
     {
         return arr.Aggregate(0, (sum, x) => x > 0 ? sum + x: sum);

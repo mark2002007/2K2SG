@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection.Metadata;
 using HDF5DotNet;
+using PS._3.Menu;
 
 namespace PS
 {
@@ -25,7 +26,7 @@ namespace PS
             //    }
             //}
             //Console.WriteLine(line);
-            Menu m = new Menu("bin");
+            Menu m = new Menu(PlaylistTypes.Bin);
             m.ShowMenu();
         }
     }

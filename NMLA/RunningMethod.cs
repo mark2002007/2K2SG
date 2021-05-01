@@ -55,59 +55,59 @@ namespace NMLA
             return res;
         }
 
-        static void Main(string[] args)
-        {
-            //==========3.1)
-            //Input
-            //double[] A, B, C, F;
-            //using (StreamReader file = new StreamReader(@"C:\Programs\MyPrograms\C#\Canvas (Cshp dnet core)\NMLA\Data\F.txt"))
-            //{
-            //    F = file.ReadLine().Split(",").Select(x => double.Parse(x)).ToArray();
-            //}
+        //static void Main(string[] args)
+        //{
+        //    //==========3.1)
+        //    //Input
+        //    //double[] A, B, C, F;
+        //    //using (StreamReader file = new StreamReader(@"C:\Programs\MyPrograms\C#\Canvas (Cshp dnet core)\NMLA\Data\F.txt"))
+        //    //{
+        //    //    F = file.ReadLine().Split(",").Select(x => double.Parse(x)).ToArray();
+        //    //}
 
-            //using (StreamReader file = new StreamReader(@"C:\Programs\MyPrograms\C#\Canvas (Cshp dnet core)\NMLA\Data\TridiagonalMatrix.txt"))
-            //{
-            //    B = file.ReadLine().Split(',').Select(x => double.Parse(x)).ToArray();
-            //    C = file.ReadLine().Split(',').Select(x => double.Parse(x)).ToArray();
-            //    A = file.ReadLine().Split(',').Select(x => double.Parse(x)).Reverse().Append(double.NaN).Reverse()
-            //        .ToArray();
-            //}
-            ////Compute
-            //var Y = RunningMethod(A, B, C, F);
-            //double[,] D = FromDiagToMatrix(A, B, C);
-            ////Output
-            //Console.WriteLine("D : ");
-            //IOMatrix.OutputMatrix(D);
-            //Console.WriteLine("F : ");
-            //IOMatrix.OutputVector(F);
-            //Console.WriteLine("Y : ");
-            //IOMatrix.OutputVector(Y);
-            //Console.WriteLine($"Dy = F : { MatrixTools.IsEqual(MatrixTools.MatrixMult(D, Y), MatrixTools.VecToMat(F)) }");
-            //IOMatrix.OutputMatrix(MatrixTools.MatrixMult(D, Y));
+        //    //using (StreamReader file = new StreamReader(@"C:\Programs\MyPrograms\C#\Canvas (Cshp dnet core)\NMLA\Data\TridiagonalMatrix.txt"))
+        //    //{
+        //    //    B = file.ReadLine().Split(',').Select(x => double.Parse(x)).ToArray();
+        //    //    C = file.ReadLine().Split(',').Select(x => double.Parse(x)).ToArray();
+        //    //    A = file.ReadLine().Split(',').Select(x => double.Parse(x)).Reverse().Append(double.NaN).Reverse()
+        //    //        .ToArray();
+        //    //}
+        //    ////Compute
+        //    //var Y = RunningMethod(A, B, C, F);
+        //    //double[,] D = FromDiagToMatrix(A, B, C);
+        //    ////Output
+        //    //Console.WriteLine("D : ");
+        //    //IOMatrix.OutputMatrix(D);
+        //    //Console.WriteLine("F : ");
+        //    //IOMatrix.OutputVector(F);
+        //    //Console.WriteLine("Y : ");
+        //    //IOMatrix.OutputVector(Y);
+        //    //Console.WriteLine($"Dy = F : { MatrixTools.IsEqual(MatrixTools.MatrixMult(D, Y), MatrixTools.VecToMat(F)) }");
+        //    //IOMatrix.OutputMatrix(MatrixTools.MatrixMult(D, Y));
 
 
-            //==========3.2)
-            //Setup
-            Console.Write("Enter n : ");
-            int n = int.Parse(Console.ReadLine());
-            var preset = GetSpecialPreset(n);
-            double[] A = preset.Item1, B = preset.Item2, C = preset.Item3, F = preset.Item4;
-            //Compute
-            var Y = RunningMethod(A, B, C, F);
-            double[,] D = FromDiagToMatrix(A, B, C);
-            var Y_ = ComputeY_(n);
-            //Output
-            Console.WriteLine("D : ");
-            IOMatrix.OutputMatrix(D);
-            Console.WriteLine("F : ");
-            IOMatrix.OutputVector(F);
-            Console.WriteLine("Y : ");
-            IOMatrix.OutputVector(Y);
-            Console.WriteLine($"Dy = F : { MatrixTools.IsEqual(MatrixTools.MatrixMult(D, Y), MatrixTools.VecToMat(F)) }");
-            Console.WriteLine($"||y - y*|| = {MatrixTools.SubVecs(Y, Y_).Max()}");
+        //    //==========3.2)
+        //    //Setup
+        //    Console.Write("Enter n : ");
+        //    int n = int.Parse(Console.ReadLine());
+        //    var preset = GetSpecialPreset(n);
+        //    double[] A = preset.Item1, B = preset.Item2, C = preset.Item3, F = preset.Item4;
+        //    //Compute
+        //    var Y = RunningMethod(A, B, C, F);
+        //    double[,] D = FromDiagToMatrix(A, B, C);
+        //    var Y_ = ComputeY_(n);
+        //    //Output
+        //    Console.WriteLine("D : ");
+        //    IOMatrix.OutputMatrix(D);
+        //    Console.WriteLine("F : ");
+        //    IOMatrix.OutputVector(F);
+        //    Console.WriteLine("Y : ");
+        //    IOMatrix.OutputVector(Y);
+        //    Console.WriteLine($"Dy = F : { MatrixTools.IsEqual(MatrixTools.MatrixMult(D, Y), MatrixTools.VecToMat(F)) }");
+        //    Console.WriteLine($"||y - y*|| = {MatrixTools.SubVecs(Y, Y_).Max()}");
 
-            Console.Read();
-        }
+        //    Console.Read();
+        //}
 
         public static (double[], double[], double[], double[]) GetSpecialPreset(int n)
         {
