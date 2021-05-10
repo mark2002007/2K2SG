@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -39,6 +40,8 @@ namespace NMLA
         }
         public static double[,] MatrixMult(double[,] A, double[] B) => MatrixMult(A, VecToMat(B));
 
+        public static double[,] VecMult(double[] A, double[] B) => MatrixMult(VecToMat(A), VecToMat(B));
+
         public static bool IsEqual(double[,] A, double[,] B)
         {
             if (A.GetLength(0) != B.GetLength(0) ||
@@ -51,6 +54,7 @@ namespace NMLA
             return true;
         }
 
+        public static bool IsEqual(double[] A, double[] B) => IsEqual(VecToMat(A), VecToMat(B));
 
     }
 }
